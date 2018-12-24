@@ -1,12 +1,13 @@
+/* eslint-disable react-native/no-raw-text */
 import React from 'react';
-import {View,Text, Image} from 'react-native';
+import {View,Text, Image, Linking} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
 
 // eslint-disable-next-line react/prop-types
 const AlbumDetail = ({album}) => {
-    const {title,artist,thumbnail_image, image} = album;
+    const {title,artist,thumbnail_image, image, url} = album;
     const {headerContentStyle, thumbnailStyle, thumbnailContainerStyle, headerTextStyle, imageStyle} = styles;
   return(
     <Card>
@@ -28,7 +29,9 @@ const AlbumDetail = ({album}) => {
       </CardSection>
 
       <CardSection>
-        <Button /> 
+        <Button onPress={() => Linking.openURL(url)}>
+          Buy Album
+        </Button> 
       </CardSection>
     </Card>
   );
